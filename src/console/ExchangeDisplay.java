@@ -8,5 +8,4 @@ public class ExchangeDisplay implements ui.ExchangeDisplay {
     public void display(Money money) {
         System.out.println(money.getAmount() + " " + money.getCurrency());
     }
-    
 }

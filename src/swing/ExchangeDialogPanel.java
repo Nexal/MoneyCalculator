@@ -34,13 +34,13 @@ public class ExchangeDialogPanel extends JPanel implements ExchangeDialog {
     }
 
     private Component createFromCurrencyWidget() {
-        JComboBox<Currency> input = new JComboBox<Currency>(currencies);
+        JComboBox<Currency> input = new JComboBox<>(currencies);
         this.fromCurrency = input;
         return input;
     }
 
     private Component createToCurrencyWidget() {
-        JComboBox<Currency> input = new JComboBox<Currency>(currencies);
+        JComboBox<Currency> input = new JComboBox<>(currencies);
         this.toCurrency = input;
         return input;
     }
@@ -62,6 +62,4 @@ public class ExchangeDialogPanel extends JPanel implements ExchangeDialog {
     private Currency getCurrency(JComboBox<Currency> comboBox) {
         return comboBox.getItemAt(comboBox.getSelectedIndex());
     }
-
-
 }

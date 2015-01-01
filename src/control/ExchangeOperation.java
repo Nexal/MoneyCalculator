@@ -1,7 +1,7 @@
 package control;
 
-import ui.ExchangeDialog;
-import ui.ExchangeDisplay;
+import view.ExchangeDialog;
+import view.ExchangeDisplay;
 
 public class ExchangeOperation {
     

@@ -8,7 +8,7 @@ import swing.ApplicationFrame;
 
 import java.awt.event.*;
 
-public class Application {
+public class MoneyCalculator {
 
     public static void main(String[] args) {
         CurrencySet currencySet = new CurrencySetLoader().load();

@@ -1,7 +1,7 @@
 package swing;
 
 import model.Currency;
-import ui.ExchangeDialog;
+import view.ExchangeDialog;
 
 import javax.swing.*;
 import java.awt.*;

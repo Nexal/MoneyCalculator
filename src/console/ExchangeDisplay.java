@@ -2,7 +2,7 @@ package console;
 
 import model.Money;
 
-public class ExchangeDisplay implements ui.ExchangeDisplay {
+public class ExchangeDisplay implements view.ExchangeDisplay {
 
     @Override
     public void display(Money money) {

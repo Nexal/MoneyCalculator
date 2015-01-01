@@ -3,7 +3,7 @@ package swing;
 import model.Currency;
 import model.Exchange;
 import model.Money;
-import ui.ExchangeDialog;
+import view.ExchangeDialog;
 
 import javax.swing.*;
 import java.awt.*;

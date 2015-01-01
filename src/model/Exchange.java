@@ -1,20 +1,39 @@
 package model;
 
+import java.util.Date;
+
 public class Exchange {
+   private Date date;
+   private Currency from;
+   private Currency to;
+   private double rate;
 
-    private final Money money;
-    private final Currency currency;
-
-    public Exchange(Money money, Currency currency) {
-        this.money = money;
-        this.currency = currency;
+    public Exchange(Date date, Currency from, Currency to, double rate) {
+        this.date = date;
+        this.from = from;
+        this.to = to;
+        this.rate = rate;
+    }
+    
+    public Exchange(Currency from, Currency to, double rate) {
+        this(new Date(),from,to,rate);
     }
 
-    public Money getMoney() {
-        return money;
+    public Date getDate() {
+        return date;
     }
 
-    public Currency getCurrency() {
-        return currency;
+    public Currency getFrom() {
+        return from;
     }
+
+    public Currency getTo() {
+        return to;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+    
+    
 }

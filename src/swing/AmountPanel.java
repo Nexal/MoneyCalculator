@@ -8,12 +8,12 @@ class AmountPanel extends JPanel {
     private String amount;
     
     public AmountPanel() {
-        add (createTextField());
+        this.add(createTextField());
     }
     
     private JTextField createTextField(){
-        final JTextField jTextField = new JTextField(5);
-        jTextField.addKeyListener(new KeyListener() {
+        final JTextField inputAmount = new JTextField(5);
+        inputAmount.addKeyListener(new KeyListener() {
 
             @Override
             public void keyTyped(KeyEvent e) {
@@ -25,10 +25,10 @@ class AmountPanel extends JPanel {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                amount = jTextField.getText();
+                amount = inputAmount.getText();
             }
         });
-        return jTextField;
+        return inputAmount;
     }
     
     public String getAmount(){

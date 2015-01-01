@@ -12,27 +12,27 @@ import persistence.ExchangeRateLoader;
 import mock.MockExchangeRateLoader;
 
 public class ApplicationFrame extends JFrame {
+
     private JPanel moneyPanel;
-    private CurrencyPanel toCurrencyPanel;
+    private CurrencyPanel toCurrencyPanel, fromCurrencyPanel;
     private AmountPanel amountPanel;
-    private CurrencyPanel fromCurrencyPanel;
     private JLabel label;
-    
-    
-    public ApplicationFrame(){
+
+    public ApplicationFrame() {
         setTitle("Money Calculator");
-        setMinimumSize(new Dimension(450, 450));
+        setMinimumSize(new Dimension(300, 300));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         createComponents();
         setVisible(true);
     }
-    private void createComponents(){
+
+    private void createComponents() {
         add(createMainPanel(), BorderLayout.NORTH);
-        add(createToolbar(), BorderLayout.SOUTH);
+        add(createExchangeButton(), BorderLayout.SOUTH);
         add(createLabel("Introduzca cantidad, divisas origen y destino."), BorderLayout.CENTER);
     }
-    
+
     private JPanel createMainPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout());
@@ -42,7 +42,7 @@ public class ApplicationFrame extends JFrame {
         panel.add(toCurrencyPanel, BorderLayout.NORTH);
         return panel;
     }
-    
+
     private JPanel createMoneyPanel() {
         JPanel panel = new JPanel();
         this.amountPanel = new AmountPanel();
@@ -56,56 +56,36 @@ public class ApplicationFrame extends JFrame {
         CurrencyPanel panel = new CurrencyPanel();
         return panel;
     }
-    
-    private JPanel createToolbar(){
-        JPanel toolbar = new JPanel();
-        toolbar.setLayout(new FlowLayout(FlowLayout.CENTER));
-        toolbar.add(createExchangeButton());
-        toolbar.add(exitButton());
-        return toolbar;
-    }
-    private JButton createExchangeButton(){
-        JButton button = new JButton("Change Money");
+
+    private JPanel createExchangeButton() {
+        JButton button = new JButton("Calculate");
+        JPanel centeredButton = new JPanel(new FlowLayout());
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 operation();
             }
-            });
-        return button;   
+        });
+        centeredButton.add(button);
+        return centeredButton;
     }
-    
-    private void operation(){
+
+    private void operation() {
         MoneyExchanger moneyExchanger = new MoneyExchanger();
         Double amount = Double.parseDouble(amountPanel.getAmount());
         CurrencySet set = CurrencySet.getInstance();
         Currency fromCurrency = set.get(fromCurrencyPanel.getCurrency());
         Currency toCurrency = set.get(toCurrencyPanel.getCurrency());
-        Money money = new Money(amount,fromCurrency);
+        Money money = new Money(amount, fromCurrency);
         ExchangeRateLoader loader = new MockExchangeRateLoader();
-        Exchange rate = loader.load(fromCurrency,toCurrency);
-        moneyExchanger.exchange(new Money(amount,fromCurrency), rate);
-        label.setText("Resultado: " + moneyExchanger.getMoney().getAmount() + " "+ moneyExchanger.getMoney().getCurrency().getName());
+        Exchange rate = loader.load(fromCurrency, toCurrency);
+        moneyExchanger.exchange(new Money(amount, fromCurrency), rate);
+        label.setText("Resultado: " + moneyExchanger.getMoney().getAmount() + " " + moneyExchanger.getMoney().getCurrency().getName());
     }
-    
-    private JLabel createLabel(String result){
+
+    private JLabel createLabel(String result) {
         label = new JLabel(result);
         label.setHorizontalAlignment((int) CENTER_ALIGNMENT);
         return label;
     }
-    
-    private JButton exitButton(){
-        JButton button = new JButton("Exit");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                exit();
-            }
-            });
-        return button;   
-    }
-    
-    private void exit(){
-        dispose();
-    }   
 }

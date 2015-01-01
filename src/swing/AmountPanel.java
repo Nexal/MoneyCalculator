@@ -1,5 +1,6 @@
 package swing;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -8,10 +9,26 @@ class AmountPanel extends JPanel {
     private String amount;
     
     public AmountPanel() {
-        this.add(createTextField());
+        
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        
+        this.add(createHeaderLabel(), CENTER_ALIGNMENT);
+        this.add(Box.createVerticalStrut(10));
+        this.add(createTextField(), CENTER_ALIGNMENT);
     }
     
-    private JTextField createTextField(){
+    private Component createHeaderLabel() {
+        JPanel panel = new JPanel();
+        panel.setLayout(new FlowLayout());
+        
+        panel.add(new JLabel("Enter the desired amount of money"), CENTER_ALIGNMENT);
+        
+        return panel;
+    }
+    
+    private Component createTextField(){
+        JPanel panel = new JPanel(new FlowLayout());
+        
         final JTextField inputAmount = new JTextField(5);
         inputAmount.addKeyListener(new KeyListener() {
 
@@ -28,10 +45,14 @@ class AmountPanel extends JPanel {
                 amount = inputAmount.getText();
             }
         });
-        return inputAmount;
+        
+        panel.add(inputAmount, CENTER_ALIGNMENT);
+        
+        return panel;
     }
     
     public String getAmount(){
         return amount;
     }
+
 }

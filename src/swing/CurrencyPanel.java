@@ -8,9 +8,15 @@ import model.CurrencySet;
 
 class CurrencyPanel extends JPanel {
     private String currency = "USD";
+    private JLabel guideText;
 
-    public CurrencyPanel() {
-        add(createComboBox());
+    public CurrencyPanel(String s) {
+        this.guideText = new JLabel("Select " + s + " currency");
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        
+        this.add(guideText, CENTER_ALIGNMENT);
+        this.add(Box.createVerticalStrut(10));
+        this.add(createComboBox(), CENTER_ALIGNMENT);
     }
     
     private JComboBox createComboBox(){

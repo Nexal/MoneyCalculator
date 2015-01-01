@@ -11,26 +11,26 @@ public class MockCurrencySetLoader implements CurrencySetLoader {
         CurrencySet currencySet = CurrencySet.getInstance();
       
    
-        currencySet.add(new Currency("AUD", "Dolar Australiano", "A$"));
-        currencySet.add(new Currency("BGN", "Real Brasileño", "R$"));
-        currencySet.add(new Currency("CAD", "Dolar Canadiense", "C$"));
-        currencySet.add(new Currency("CHF", "Franco Suizo", "Fr"));
-        currencySet.add(new Currency("CNY", "Yuan", "¥"));
-        currencySet.add(new Currency("CZK", "Corona Checa", "Kc"));
-        currencySet.add(new Currency("DKK", "Corona Danesa", "Kr"));
+        currencySet.add(new Currency("AUD", "Australian Dollar", "A$"));
+        currencySet.add(new Currency("BGN", "Brazilian Real", "R$"));
+        currencySet.add(new Currency("CAD", "Canadian Dollar", "C$"));
+        currencySet.add(new Currency("CHF", "Swiss Franc", "Fr"));
+        currencySet.add(new Currency("CNY", "Chinese Yuan", "元"));
+        currencySet.add(new Currency("CZK", "Czech Koruna", "Kc"));
+        currencySet.add(new Currency("DKK", "Danish Krone", "Kr"));
         currencySet.add(new Currency("EUR", "Euros", "€"));
-        currencySet.add(new Currency("GBP", "Libra Esterlina", "£"));
-        currencySet.add(new Currency("HKD", "Dolar de Hong Kong", "HK$"));
-        currencySet.add(new Currency("HUF", "Forinto hungaro", "Ft"));
-        currencySet.add(new Currency("JPY", "Yen Japones", "¥"));
-        currencySet.add(new Currency("MXN", "Peso Mexicano", "$"));
-        currencySet.add(new Currency("NOK", "Corona Noruega", "kr"));
-        currencySet.add(new Currency("NZD", "Dolar Neozelandes", "NZ$"));
-        currencySet.add(new Currency("PLN", "Zloty", "Zt"));
-        currencySet.add(new Currency("SEK", "Corona Sueca", "kr"));
-        currencySet.add(new Currency("SGD", "Dolar de Singapur", "S$"));
-        currencySet.add(new Currency("USD", "Dolar de Estados Unidos", "$"));
-        currencySet.add(new Currency("ZAR", "Rand", "R"));
+        currencySet.add(new Currency("GBP", "British Pound", "£"));
+        currencySet.add(new Currency("HKD", "Hong Kong Dollar", "HK$"));
+        currencySet.add(new Currency("HUF", "Hungarian Forint", "Ft"));
+        currencySet.add(new Currency("JPY", "Japanese Yen", "¥"));
+        currencySet.add(new Currency("MXN", "Mexican Peso", "$"));
+        currencySet.add(new Currency("NOK", "Norwegian Krone", "kr"));
+        currencySet.add(new Currency("NZD", "New Zealand Dollar", "NZ$"));
+        currencySet.add(new Currency("PLN", "Polish Zloty", "Zt"));
+        currencySet.add(new Currency("SEK", "Swedish Krona", "kr"));
+        currencySet.add(new Currency("SGD", "Singapore Dollar", "S$"));
+        currencySet.add(new Currency("USD", "US Dollar", "$"));
+        currencySet.add(new Currency("ZAR", "South African Rand", "R"));
 
 
         return currencySet;

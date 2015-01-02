@@ -76,14 +76,14 @@ public class ApplicationFrame extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                operation();
+                calculateButtonOperation();
             }
         });
         centeredButton.add(button);
         return centeredButton;
     }
 
-    private void operation() {
+    private void calculateButtonOperation() {
         try {
             MoneyExchanger moneyExchanger = new MoneyExchanger();
             Double amount = Double.parseDouble(amountPanel.getAmount());

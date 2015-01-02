@@ -84,18 +84,22 @@ public class ApplicationFrame extends JFrame {
     }
 
     private void operation() {
-        MoneyExchanger moneyExchanger = new MoneyExchanger();
-        Double amount = Double.parseDouble(amountPanel.getAmount());
-        CurrencySet set = CurrencySet.getInstance();
-        Currency fromCurrency = set.get(fromCurrencyPanel.getCurrency());
-        Currency toCurrency = set.get(toCurrencyPanel.getCurrency());
-        Money money = new Money(amount, fromCurrency);
-        ExchangeRateLoader loader = new MockExchangeRateLoader();
-        Exchange rate = loader.load(fromCurrency, toCurrency);
-        moneyExchanger.exchange(new Money(amount, fromCurrency), rate);
-        label.setText(moneyExchanger.getMoney().getAmount() + " "
-                + " [" + moneyExchanger.getMoney().getCurrency().getSymbol() + "]"
-                + " (" + moneyExchanger.getMoney().getCurrency().getName() + ")");
+        try {
+            MoneyExchanger moneyExchanger = new MoneyExchanger();
+            Double amount = Double.parseDouble(amountPanel.getAmount());
+            CurrencySet set = CurrencySet.getInstance();
+            Currency fromCurrency = set.get(fromCurrencyPanel.getCurrency());
+            Currency toCurrency = set.get(toCurrencyPanel.getCurrency());
+            Money money = new Money(amount, fromCurrency);
+            ExchangeRateLoader loader = new MockExchangeRateLoader();
+            Exchange rate = loader.load(fromCurrency, toCurrency);
+            moneyExchanger.exchange(new Money(amount, fromCurrency), rate);
+            label.setText(moneyExchanger.getMoney().getAmount() + " "
+                    + " [" + moneyExchanger.getMoney().getCurrency().getSymbol() + "]"
+                    + " (" + moneyExchanger.getMoney().getCurrency().getName() + ")");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Invalid input data", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 }

@@ -7,7 +7,7 @@ import model.Currency;
 import model.CurrencySet;
 
 class CurrencyPanel extends JPanel {
-    private String currency = "USD";
+    private String currency = "AUD";
     private JLabel guideText;
 
     public CurrencyPanel(String s) {

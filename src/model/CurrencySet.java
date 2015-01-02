@@ -1,8 +1,8 @@
 package model;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
-public class CurrencySet extends HashSet<Currency> {
+public class CurrencySet extends ArrayList<Currency> {
 
     private static CurrencySet instance;
 

@@ -8,6 +8,7 @@ import model.CurrencySet;
 import model.Exchange;
 import model.Money;
 import control.MoneyExchanger;
+import java.net.URL;
 import javax.swing.border.Border;
 import persistence.ExchangeRateLoader;
 import mock.MockExchangeRateLoader;
@@ -20,7 +21,8 @@ public class ApplicationFrame extends JFrame {
 
     public ApplicationFrame() {
         setTitle("Money Calculator");
-        setMinimumSize(new Dimension(500, 300));
+        setIconImage(setIcon().getImage());
+        setSize(new Dimension(500, 300));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         createComponents();
@@ -100,6 +102,12 @@ public class ApplicationFrame extends JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Invalid input data", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private ImageIcon setIcon() {
+        URL iconURL = getClass().getResource("icon.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        return icon;
     }
 
 }

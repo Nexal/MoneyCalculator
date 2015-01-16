@@ -21,7 +21,7 @@ public class ApplicationFrame extends JFrame {
     public ApplicationFrame() {
         setTitle("Money Calculator");
         setIconImage(setIcon().getImage());
-        setSize(new Dimension(500, 300));
+        setSize(new Dimension(500, 250));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         createComponents();
@@ -73,6 +73,7 @@ public class ApplicationFrame extends JFrame {
         return centeredButton;
     }
 
+    @SuppressWarnings("UseSpecificCatch")
     private void calculateButtonOperation() {
         try {
             MoneyExchanger moneyExchanger = new MoneyExchanger();
@@ -88,7 +89,7 @@ public class ApplicationFrame extends JFrame {
                     + " [" + moneyExchanger.getMoney().getCurrency().getSymbol() + "]"
                     + " (" + moneyExchanger.getMoney().getCurrency().getName() + ")");
             JOptionPane.showMessageDialog(this, exchangeResult, "Exchange Result", JOptionPane.PLAIN_MESSAGE);
-        } catch (NumberFormatException | HeadlessException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Invalid input data", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }

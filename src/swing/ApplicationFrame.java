@@ -9,7 +9,6 @@ import model.Exchange;
 import model.Money;
 import control.MoneyExchanger;
 import java.net.URL;
-import javax.swing.border.Border;
 import persistence.ExchangeRateLoader;
 import mock.MockExchangeRateLoader;
 
@@ -17,7 +16,7 @@ public class ApplicationFrame extends JFrame {
 
     private CurrencyPanel fromCurrencyPanel, toCurrencyPanel;
     private AmountPanel amountPanel;
-    private JLabel label;
+    private JLabel exchangeResult;
 
     public ApplicationFrame() {
         setTitle("Money Calculator");
@@ -44,8 +43,6 @@ public class ApplicationFrame extends JFrame {
         panel.add(Box.createVerticalStrut(20));
         panel.add(createSelectionPanel(), CENTER_ALIGNMENT);
         panel.add(Box.createVerticalStrut(20));
-        panel.add(createLabel("*Results of the exchange will appear here*"), CENTER_ALIGNMENT);
-        panel.add(Box.createVerticalStrut(20));
         return panel;
     }
 
@@ -60,15 +57,6 @@ public class ApplicationFrame extends JFrame {
         panel.add(Box.createHorizontalStrut(15));
         panel.add(toCurrencyPanel, CENTER_ALIGNMENT);
 
-        return panel;
-    }
-
-    private Component createLabel(String result) {
-        label = new JLabel(result, (int) CENTER_ALIGNMENT);
-        Border border = BorderFactory.createLoweredBevelBorder();
-        label.setBorder(border);
-        JPanel panel = new JPanel(new FlowLayout());
-        panel.add(label, CENTER_ALIGNMENT);
         return panel;
     }
 
@@ -96,10 +84,11 @@ public class ApplicationFrame extends JFrame {
             ExchangeRateLoader loader = new MockExchangeRateLoader();
             Exchange rate = loader.load(fromCurrency, toCurrency);
             moneyExchanger.exchange(new Money(amount, fromCurrency), rate);
-            label.setText(moneyExchanger.getMoney().getAmount() + " "
+            exchangeResult = new JLabel(moneyExchanger.getMoney().getAmount() + " "
                     + " [" + moneyExchanger.getMoney().getCurrency().getSymbol() + "]"
                     + " (" + moneyExchanger.getMoney().getCurrency().getName() + ")");
-        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, exchangeResult, "Exchange Result", JOptionPane.PLAIN_MESSAGE);
+        } catch (NumberFormatException | HeadlessException e) {
             JOptionPane.showMessageDialog(this, "Invalid input data", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
